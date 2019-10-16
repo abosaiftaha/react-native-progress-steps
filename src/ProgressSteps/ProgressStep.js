@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { View, ScrollView, TouchableOpacity, Text } from 'react-native';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import { View, ScrollView, TouchableOpacity, Text } from "react-native";
+import PropTypes from "prop-types";
 
-import ProgressButtons from './ProgressButtons';
+import ProgressButtons from "./ProgressButtons";
 
 class ProgressStep extends Component {
   onNextStep = async () => {
@@ -28,19 +28,19 @@ class ProgressStep extends Component {
 
   renderNextButton = () => {
     const btnStyle = {
-      textAlign: 'center',
+      textAlign: "center",
       padding: 8,
       ...this.props.nextBtnStyle
     };
 
     const btnTextStyle = {
-      color: '#007AFF',
+      color: "#007AFF",
       fontSize: 18,
       ...this.props.nextBtnTextStyle
     };
 
     const disabledBtnText = {
-      color: '#cdcdcd'
+      color: "#cdcdcd"
     };
 
     let textStyle = [btnTextStyle];
@@ -49,11 +49,17 @@ class ProgressStep extends Component {
     return (
       <TouchableOpacity
         style={btnStyle}
-        onPress={this.props.activeStep === this.props.stepCount - 1 ? this.onSubmit : this.onNextStep}
+        onPress={
+          this.props.activeStep === this.props.stepCount - 1
+            ? this.onSubmit
+            : this.onNextStep
+        }
         disabled={this.props.nextBtnDisabled}
       >
         <Text style={textStyle}>
-          {this.props.activeStep === this.props.stepCount - 1 ? this.props.finishBtnText : this.props.nextBtnText}
+          {this.props.activeStep === this.props.stepCount - 1
+            ? this.props.finishBtnText
+            : this.props.nextBtnText}
         </Text>
       </TouchableOpacity>
     );
@@ -61,27 +67,33 @@ class ProgressStep extends Component {
 
   renderPreviousButton = () => {
     const btnStyle = {
-      textAlign: 'center',
+      textAlign: "center",
       padding: 8,
       ...this.props.previousBtnStyle
     };
 
     const btnTextStyle = {
-      color: '#007AFF',
+      color: "#007AFF",
       fontSize: 18,
       ...this.props.previousBtnTextStyle
     };
 
     const disabledBtnText = {
-      color: '#cdcdcd'
+      color: "#cdcdcd"
     };
 
     let textStyle = [btnTextStyle];
     if (this.props.previousBtnDisabled) textStyle.push(disabledBtnText);
 
     return (
-      <TouchableOpacity style={btnStyle} onPress={this.onPreviousStep} disabled={this.props.previousBtnDisabled}>
-        <Text style={textStyle}>{this.props.activeStep === 0 ? '' : this.props.previousBtnText}</Text>
+      <TouchableOpacity
+        style={btnStyle}
+        onPress={this.onPreviousStep}
+        disabled={this.props.previousBtnDisabled}
+      >
+        <Text style={textStyle}>
+          {this.props.activeStep === 0 ? "" : this.props.previousBtnText}
+        </Text>
       </TouchableOpacity>
     );
   };
@@ -93,7 +105,10 @@ class ProgressStep extends Component {
       <View style={{ flex: 1 }}>
         <ScrollView {...scrollViewProps}>{this.props.children}</ScrollView>
 
-        <ProgressButtons renderNextButton={this.renderNextButton} renderPreviousButton={this.renderPreviousButton} />
+        <ProgressButtons
+          renderNextButton={this.renderNextButton}
+          renderPreviousButton={this.renderPreviousButton}
+        />
       </View>
     );
   }
@@ -120,9 +135,9 @@ ProgressStep.propTypes = {
 };
 
 ProgressStep.defaultProps = {
-  nextBtnText: 'Next',
-  previousBtnText: 'Previous',
-  finishBtnText: 'Submit',
+  nextBtnText: "Next",
+  previousBtnText: "Previous",
+  finishBtnText: "Submit",
   nextBtnDisabled: false,
   previousBtnDisabled: false,
   errors: false
