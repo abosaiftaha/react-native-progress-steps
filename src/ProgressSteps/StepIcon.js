@@ -80,7 +80,7 @@ class StepIcon extends Component {
           right: 35 + 8,
           borderTopStyle: this.props.borderStyle,
           borderTopWidth: this.props.borderWidth,
-          borderTopColor: "#434A9C",
+          borderTopColor: this.props.completedStepIconColor,
           marginRight: 2
         },
         rightBar: {
@@ -90,7 +90,7 @@ class StepIcon extends Component {
           left: 35 + 8,
           borderTopStyle: this.props.borderStyle,
           borderTopWidth: this.props.borderWidth,
-          borderTopColor: "#434A9C",
+          borderTopColor: this.props.completedStepIconColor,
           marginLeft: 2
         },
         stepNum: {
