@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { View } from 'react-native';
-import _ from 'lodash';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import { View } from "react-native";
+import _ from "lodash";
+import PropTypes from "prop-types";
 
-import StepIcon from './StepIcon';
+import StepIcon from "./StepIcon";
 
 class ProgressSteps extends Component {
   state = {
     stepCount: 0,
-    activeStep: this.props.activeStep || 0,
+    activeStep: this.props.activeStep || 0
   };
 
   componentDidMount() {
@@ -51,10 +51,10 @@ class ProgressSteps extends Component {
   render() {
     const styles = {
       stepIcons: {
-        position: 'relative',
-        justifyContent: 'space-evenly',
-        alignSelf: 'center',
-        flexDirection: 'row',
+        // position: "relative",
+        justifyContent: "space-between",
+        alignSelf: "center",
+        flexDirection: "row",
         top: 30,
         marginBottom: 50
       }
