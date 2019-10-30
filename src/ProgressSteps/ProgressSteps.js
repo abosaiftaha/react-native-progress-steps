@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { View } from "react-native";
+import { View, TouchableOpacity, Text, Image } from "react-native";
+import back from "../../assets/backArrow.png";
 import _ from "lodash";
 import PropTypes from "prop-types";
 
@@ -48,6 +49,10 @@ class ProgressSteps extends Component {
     this.setState({ activeStep: step });
   };
 
+  backStep = step => {
+    this.setState({ activeStep: step });
+  };
+
   render() {
     const styles = {
       stepIcons: {
@@ -57,11 +62,34 @@ class ProgressSteps extends Component {
         flexDirection: "row",
         top: 30,
         marginBottom: 50
+      },
+      back: {
+        width: 15,
+        height: 15,
+        marginTop: 10,
+        marginLeft: 20
       }
     };
 
     return (
       <View style={{ flex: 1 }}>
+        <TouchableOpacity
+          onPress={() =>
+            this.state.activeStep !== 0
+              ? this.setState(prevState => ({
+                  activeStep: prevState.activeStep - 1
+                }))
+              : this.setState(prevState => ({
+                  activeStep: 0
+                }))
+          }
+        >
+          {this.state.activeStep !== 0 ? (
+            <Image source={back} style={styles.back} />
+          ) : (
+            <Text></Text>
+          )}
+        </TouchableOpacity>
         <View style={styles.stepIcons}>{this.renderStepIcons()}</View>
         <View style={{ flex: 1 }}>
           {React.cloneElement(this.props.children[this.state.activeStep], {

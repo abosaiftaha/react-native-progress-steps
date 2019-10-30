@@ -103,12 +103,14 @@ class ProgressStep extends Component {
 
     return (
       <View style={{ flex: 1 }}>
-        <ScrollView {...scrollViewProps}>{this.props.children}</ScrollView>
+        <ScrollView {...scrollViewProps}>
+          {this.props.children}
 
-        <ProgressButtons
-          renderNextButton={this.renderNextButton}
-          renderPreviousButton={this.renderPreviousButton}
-        />
+          <ProgressButtons
+            renderNextButton={this.renderNextButton}
+            renderPreviousButton={this.renderPreviousButton}
+          />
+        </ScrollView>
       </View>
     );
   }
