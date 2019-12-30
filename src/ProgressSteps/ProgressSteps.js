@@ -84,7 +84,8 @@ class ProgressSteps extends Component {
                 }))
           }
         >
-          {this.state.activeStep !== 0 ? (
+          {this.state.activeStep !== 0 &&
+          this.state.activeStep !== this.state.stepCount - 1 ? (
             <Image source={back} style={styles.back} />
           ) : (
             <Text></Text>
